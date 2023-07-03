@@ -1,0 +1,156 @@
+.contenedor {
+    background-color: rgb(173, 217, 236);
+    width: 600px;
+    height: 350px;
+    border: 1px solid black;
+  }
+  
+  .hr1 {
+    color: red;
+  }
+  
+  .titulo {
+    font-size: 30px;
+    color: black;
+  }
+  
+  #btn {
+    background-color: rgb(32, 27, 132);
+    font-size: 12px;
+    padding: 5px 6px;
+    color: aliceblue;
+    border: none;
+    width: 150px;
+  }
+  
+  #datoInput {
+    width: 300px;
+  }
+  
+  #lista-textos {
+    width: 600px;
+    height: 250px;
+    border-color: black;
+    border: 1px solid #ccc;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  input[type="text"] {
+    padding: 4px;
+  }
+  
+  th,
+  td {
+    border: 1px solid black;
+    padding: 8px;
+    width: 600px;
+    height: 7px;
+  }
+  #marcar {
+    background-color: bisque;
+    border-radius: 80px;
+    float: right;
+    width: 60px;
+    height: 60px;
+    margin-right: 35px;
+    margin-top: 10px;
+  }
+  
+  .valerylinda {
+    background-color: rgb(255, 255, 255);
+    float: right;
+    height: 50px;
+    margin-right: 650px;
+    height: 85px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .soy {
+    float: left;
+    background-color: rgba(251, 255, 255, 0.441);
+  }
+  
+  #mensaje1 {
+    position: absolute;
+    bottom: 30%;
+    margin-left: 14%;
+    height: 100px;
+    width: 200px;
+    background-color: rgba(173, 217, 236, 0);
+  }
+  
+  #mensaje-tareas {
+    color: rgb(53, 67, 50);
+    font-size: 20px;
+  }
+  
+  .todo {
+    background-color: rgb(255, 255, 255);
+    width: 600px;
+    height: 550px;
+    margin-left: 300px;
+    margin-top: 30px;
+  }
+  
+  .cabecera {
+    background-color: rgb(32, 27, 132);
+    height: 50px;
+  }
+  .textitoquevaalprincipiodelprogramaquedicetareasporhacer {
+    background-color: rgb(255, 255, 255);
+    height: 80px;
+  }
+  
+  .primeraparte {
+    height: 120px;
+    background-color: black;
+  }
+  
+  .Guardareltexto {
+    float: left;
+    background-color: rgb(255, 255, 255);
+    width: 440px;
+    height: 120px;
+  }
+  .Contadorcillo {
+    float: right;
+    background-color: rgb(255, 254, 255);
+    width: 160px;
+    height: 120px;
+  }
+  .partedeabajo {
+    background-color: rgba(32, 27, 132, 0.468);
+    height: 300px;
+    width: 600px;
+   
+   
+  }
+  
+  #contador{
+  
+      background-color: rgba(32, 27, 132, 0.201);
+      border-radius: 50px;
+      float: right;
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
+      border-color: 2px black;
+      text-align: center;
+      font-size: 40px;
+  
+  }
+  
+  #imgc{
+      margin-top: 6px;
+      margin-left: 6px;
+      width: 150px;
+      
+  }
+  
+  #botonEli{
+      border-radius: 70px;
+  }

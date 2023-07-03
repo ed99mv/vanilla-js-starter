@@ -1,2 +1,6 @@
-// Inserte el código aquí
+///IMPORT´S///
+import {agregarDato, btn } from "./agregardato.js";
+btn.addEventListener('click', agregarDato)
+
+
 

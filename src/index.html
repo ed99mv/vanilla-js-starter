@@ -1,15 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do App</title>
+	<link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="todo">
+      <div class="cabecera"><img id="imgc" src="https://icones.pro/wp-content/uploads/2021/04/icone-menu-cercles-gris.png" alt=""></div>
+      <div class="textitoquevaalprincipiodelprogramaquedicetareasporhacer"><center><h1 class="titulo">Tareas por Hacer</h1></center></div>
+      <div class="primeraparte">
+        <div class="Guardareltexto">
+          <input
+          type="text"
+         id="datoInput"
+          placeholder="Ingresar Tarea"
+          /><br /><br />
+        <button type="button" id="btn">Agregar</button><br /><br />
+        
+          </div>
+        <div class="Contadorcillo">
+  
+          <span id="contador">0</span>
+          <h5 class="soy">Tareas <br> completadas</h5>
+              
+        </div>
+      </div>
+      <div class="partedeabajo"><table id="tablaDatos" class="cargar">
+        <center><tr id="fila-mensaje"></center>
+          <td id="mensaje-tareas">No se han ingresado tareas</td>
+        </tr>
+         
+       
+      </table></div>
 
-<head>
-	<title>Ejemplo básico</title>
-	<meta charset="UTF-8" />
-</head>
 
-<body>
-	<h1>La aplicación esta corriendo!</h1>
+    </div>
 
-	<script src="./index.js" type="module"></script>
+<script src="index.js" type="module"></script>
+<!-- <script type="module" src="agregardato.js"></script> -->
 </body>
-
 </html>
