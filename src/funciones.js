@@ -1,7 +1,29 @@
 ///Import´s
-import { post } from "./API.js";
-import { getTasks } from "./API.js";
-import { deleteApi } from "./API.js";
+import { deleteApi, post,get } from "./API.js";
+
+
+
+function callback(orders) {
+  
+
+// agrear a la tabla
+
+console.log(orders[3])
+
+
+
+ 
+}
+
+
+function Errores(error) {
+ 
+   
+}
+
+get().then(callback).catch(Errores)
+
+
 ///Variables
 var contadorElemento = document.getElementById("contador");
 var contador = 0;
@@ -15,20 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
   agregarbtn.addEventListener("submit", agregarDato);
 });
 
-function agregarDato() {
+async function agregarDato() {
   var datoInput = document.getElementById("datoInput");
 
   var dato = datoInput.value;
-  
-  post(dato)
-  getTasks(dato)
-  
+
   if (dato.trim() !== "") {
     var tabla = document.getElementById("tablaDatos");
     var fila = tabla.insertRow(tabla.rows.length);
     var celda = fila.insertCell(0);
     var checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
+    checkbox.checked = false;
 
     var eliminar = document.createElement("button");
     eliminar.textContent = "🗑";
@@ -36,6 +56,14 @@ function agregarDato() {
 
     let forma = document.createTextNode(dato);
     forma.textContent;
+
+    let task = {
+      task: dato,
+      checked: false,
+    };
+
+    let postResponse = await post(task);
+    fila.id = postResponse.id;
 
     celda.appendChild(forma);
     celda.appendChild(checkbox);
@@ -49,8 +77,9 @@ function agregarDato() {
   } else {
     return alert("Ingrese un texto");
   }
-  console.log(tabla.rows.length);
+
   eliminar.addEventListener("click", function () {
+    deleteApi(fila.id);
     fila.remove();
     if (checkbox.checked) {
       // var contadorElemento = document.getElementById("contador")

@@ -1,4 +1,6 @@
-///IMPORT´S///
+///IMPORT´s///
 import { agregarDato, btn } from "./funciones.js";
-import { getTasks } from "./API.js";
+
+
+///LLAMADOS
 btn.addEventListener("click", agregarDato);
