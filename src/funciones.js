@@ -1,28 +1,5 @@
 ///Import´s
-import { deleteApi, post,get } from "./API.js";
-
-
-
-function callback(orders) {
-  
-
-// agrear a la tabla
-
-console.log(orders[3])
-
-
-
- 
-}
-
-
-function Errores(error) {
- 
-   
-}
-
-get().then(callback).catch(Errores)
-
+import { deleteApi, post, get, updateTask } from "./API.js";
 
 ///Variables
 var contadorElemento = document.getElementById("contador");
@@ -31,52 +8,49 @@ var mensaje = "No hay tareas";
 let btn = document.getElementById("btn");
 
 ///Funciones
-document.addEventListener("DOMContentLoaded", function () {
-  var agregarbtn = document.getElementById("btn");
 
-  agregarbtn.addEventListener("submit", agregarDato);
-});
+async function getTask() {
+  let tareas = await get();
+  let contadorAux = 0;
+  tareas.forEach((tarea) => {
+    crearVariableOmaiga(tarea.id, tarea.task, tarea.checked);
+  });
 
-async function agregarDato() {
-  var datoInput = document.getElementById("datoInput");
-
-  var dato = datoInput.value;
-
-  if (dato.trim() !== "") {
-    var tabla = document.getElementById("tablaDatos");
-    var fila = tabla.insertRow(tabla.rows.length);
-    var celda = fila.insertCell(0);
-    var checkbox = document.createElement("input");
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.checked = false;
-
-    var eliminar = document.createElement("button");
-    eliminar.textContent = "🗑";
-    eliminar.id = "botonEli";
-
-    let forma = document.createTextNode(dato);
-    forma.textContent;
-
-    let task = {
-      task: dato,
-      checked: false,
-    };
-
-    let postResponse = await post(task);
-    fila.id = postResponse.id;
-
-    celda.appendChild(forma);
-    celda.appendChild(checkbox);
-    celda.appendChild(eliminar);
-
-    var tabla = document.getElementById("tablaDatos");
-    mensaje = document.getElementById("mensaje");
-    let filamensaje = document.getElementById("fila-mensaje");
-    filamensaje.style.display = "none";
-    datoInput.value = "";
-  } else {
-    return alert("Ingrese un texto");
+  for (let index = 0; index < tareas.length; index++) {
+    if (tareas[index].checked == true) {
+      contadorAux++;
+    }
   }
+  contadorElemento.textContent = contadorAux;
+  contador = contadorAux;
+}
+
+document.addEventListener("DOMContentLoaded", getTask);
+
+function crearVariableOmaiga(id, dato, checked) {
+  var tabla = document.getElementById("tablaDatos");
+  var fila = tabla.insertRow(tabla.rows.length);
+  var celda = fila.insertCell(0);
+  fila.id = id;
+
+  let forma = document.createTextNode(dato);
+  forma.textContent;
+
+  var checkbox = document.createElement("input");
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.checked = checked;
+
+  var eliminar = document.createElement("button");
+  var tabla = document.getElementById("tablaDatos");
+  eliminar.textContent = "🗑";
+  eliminar.id = "botonEli";
+
+  celda.appendChild(forma);
+  celda.appendChild(checkbox);
+  celda.appendChild(eliminar);
+
+  let filamensaje = document.getElementById("fila-mensaje");
+  filamensaje.style.display = "none";
 
   eliminar.addEventListener("click", function () {
     deleteApi(fila.id);
@@ -92,7 +66,15 @@ async function agregarDato() {
       filamensaje.style.display = "block";
     }
   });
+
   checkbox.addEventListener("click", function () {
+   
+    let check = {
+      checked: this.checked
+    }
+
+    updateTask(id, check);
+
     if (checkbox.checked) {
       contador++;
 
@@ -107,6 +89,29 @@ async function agregarDato() {
     }
     contadorElemento.innerText = contador;
   });
+}
+
+async function agregarDato() {
+  var datoInput = document.getElementById("datoInput");
+
+  var dato = datoInput.value;
+
+  if (dato.trim() !== "") {
+    let task = {
+      task: dato,
+      checked: false,
+    };
+
+    let postResponse = await post(task);
+
+    crearVariableOmaiga(postResponse.id, postResponse.task);
+
+    mensaje = document.getElementById("mensaje");
+
+    datoInput.value = "";
+  } else {
+    return alert("Ingrese un texto");
+  }
 }
 
 document.getElementById("datoInput");
